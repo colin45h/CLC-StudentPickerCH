@@ -11,6 +11,7 @@ class StudentScreen: UIViewController {
 
     @IBOutlet weak var clickLabel: UILabel!
     var name = "UserDefault Name Error."
+    var gameID: String = "demoGame"
     
     var clicks: Int = 0
     var defaults = UserDefaults.standard
@@ -24,6 +25,10 @@ class StudentScreen: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let sesh = defaults.object(forKey: "name") as? Data {
             name = String(decoding: sesh, as: UTF8.self)
+        }
+        
+        if let sesh = defaults.object(forKey: "gameID") as? Data {
+           gameID = String(decoding: sesh, as: UTF8.self)
         }
         
         clicks = 0

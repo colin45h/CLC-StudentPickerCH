@@ -38,6 +38,47 @@ class TeacherScreen: UIViewController {
     
     @IBAction func startGame(_ sender: UIButton) {
         
+        var gameList: [Game] = []
+        
+        db.collection("games").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    // print("\(document.documentID) => \(document.data())")
+                    
+                    let gameMade = Game()
+                    
+                    for dt in document.data() {
+                        if dt.key == "isActive" {
+                            gameMade.isActive = dt.value as? Bool ?? false
+                        }
+                        if dt.key == "teacherName" {
+                            gameMade.teacherName = dt.value as? String ?? "Teacher name receive error."
+                        }
+                    }
+                    
+                    gameList.append(gameMade)
+                }
+            }
+        }
+        
+        var con = 0
+        for game in gameList {
+            if (game.isActive == true) {
+                con = 1
+            }
+        }
+        
+        if (con == 1){
+            let alert = UIAlertController(title: "Oops!", message: "Looks like there is already a game in progress.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
         ref = db.collection("games").addDocument(data: [
             "isActive" : true,
             "timePlayed" : Timestamp()
@@ -66,13 +107,13 @@ class TeacherScreen: UIViewController {
                     // print("\(document.documentID) => \(document.data())")
                     
                     let studentMade = Student()
-
+                    
                     for dt in document.data() {
                         if dt.key == "clicks" {
                             studentMade.clicks = dt.value as? Int ?? 0
                         }
                         if dt.key == "name" {
-                           studentMade.name = dt.value as? String ?? "Name receive error."
+                            studentMade.name = dt.value as? String ?? "Name receive error."
                         }
                     }
                     

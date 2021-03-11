@@ -30,6 +30,54 @@ class LoginScreen: UIViewController {
         name = nameTextField.text
         defaults.setValue(name, forKey: "name")
         
+        var gameList: [Game] = []
+        
+        db.collection("games").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    // print("\(document.documentID) => \(document.data())")
+                    
+                    let gameMade = Game()
+                    gameMade.gameID = document.documentID
+                    
+                    for dt in document.data() {
+                        if dt.key == "isActive" {
+                            gameMade.isActive = dt.value as? Bool ?? false
+                        }
+                        if dt.key == "teacherName" {
+                            gameMade.teacherName = dt.value as? String ?? "Teacher name receive error."
+                        }
+                    }
+                    
+                    gameList.append(gameMade)
+                }
+            }
+        }
+        
+        var con = 0
+        var currentGameID = ""
+        
+        for game in gameList {
+            if (game.isActive == true) {
+                con = 1
+                currentGameID = game.gameID
+                break
+            }
+        }
+        
+        if (con == 0){
+            let alert = UIAlertController(title: "Oops!", message: "There are no games currently in progress.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        defaults.setValue(currentGameID, forKey: "gameID")
+        
         performSegue(withIdentifier: "studentGo", sender: nil)
     }
     

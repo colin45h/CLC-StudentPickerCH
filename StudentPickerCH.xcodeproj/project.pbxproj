@@ -25,6 +25,7 @@
 		A08957AA25F668000012CC49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A08957A825F668000012CC49 /* GoogleService-Info.plist */; };
 		A08957AB25F668000012CC49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A08957A825F668000012CC49 /* GoogleService-Info.plist */; };
 		A0DD633525F9F1A30062EF4E /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DD633425F9F1A30062EF4E /* Student.swift */; };
+		A0E81AE325FA880F00156CA4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E81AE225FA880F00156CA4 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A06FFBE325F29F83002C08FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A08957A825F668000012CC49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0DD633425F9F1A30062EF4E /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		A0E81AE225FA880F00156CA4 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B1352060AFCF225F00651ABC /* Pods-StudentPickerCHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentPickerCHTests.release.xcconfig"; path = "Target Support Files/Pods-StudentPickerCHTests/Pods-StudentPickerCHTests.release.xcconfig"; sourceTree = "<group>"; };
 		DCA0DECF77082A74FB3664E2 /* Pods-StudentPickerCHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentPickerCHTests.debug.xcconfig"; path = "Target Support Files/Pods-StudentPickerCHTests/Pods-StudentPickerCHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E6F33FE0EF9240B64FAB59E7 /* Pods-StudentPickerCH-StudentPickerCHUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentPickerCH-StudentPickerCHUITests.release.xcconfig"; path = "Target Support Files/Pods-StudentPickerCH-StudentPickerCHUITests/Pods-StudentPickerCH-StudentPickerCHUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				A06FFBBE25F29F82002C08FF /* SceneDelegate.swift */,
 				A06FFBC025F29F82002C08FF /* StudentScreen.swift */,
 				A00B060B25F66BC200623896 /* TeacherScreen.swift */,
+				A0E81AE225FA880F00156CA4 /* Game.swift */,
 				A0DD633425F9F1A30062EF4E /* Student.swift */,
 				A06FFBC225F29F82002C08FF /* Main.storyboard */,
 				A00B061025F66C4200623896 /* LoginScreen.swift */,
@@ -433,6 +436,7 @@
 				A06FFBBF25F29F82002C08FF /* SceneDelegate.swift in Sources */,
 				A0DD633525F9F1A30062EF4E /* Student.swift in Sources */,
 				A00B061125F66C4200623896 /* LoginScreen.swift in Sources */,
+				A0E81AE325FA880F00156CA4 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
