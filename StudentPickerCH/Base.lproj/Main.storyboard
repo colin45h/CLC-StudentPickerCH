@@ -38,6 +38,9 @@
                                         <state key="normal" title="CLICK!!">
                                             <color key="titleColor" systemColor="systemOrangeColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="clickButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S4h-ZF-KSa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -52,6 +55,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OwG-Vg-rkX"/>
+                    <connections>
+                        <outlet property="clickLabel" destination="eee-yq-sgE" id="rjT-rU-FcJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,8 +114,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="signOutButton:" destination="bMx-go-O4f" eventType="touchUpInside" id="V43-8R-37L"/>
-                                            <action selector="teacherButton:" destination="bMx-go-O4f" eventType="touchUpInside" id="9ve-Je-Z7r"/>
+                                            <action selector="teacherButton:" destination="bMx-go-O4f" eventType="touchUpInside" id="Dmu-XT-y1J"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -199,6 +204,8 @@
                     <navigationItem key="navigationItem" id="h4m-iG-mCO"/>
                     <connections>
                         <outlet property="chosenStudentLabel" destination="D65-gs-uLa" id="zCQ-6C-anM"/>
+                        <outlet property="endButton" destination="Kqy-aG-7pq" id="RAo-eW-boy"/>
+                        <outlet property="startButton" destination="m39-Wx-clb" id="v5u-p2-J4j"/>
                         <outlet property="studentListLabel" destination="rLL-WX-Qh9" id="82Z-IM-Hqc"/>
                     </connections>
                 </viewController>

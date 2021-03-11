@@ -13,7 +13,8 @@ class LoginScreen: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     
     let db = Firestore.firestore()
-    var ref: String = ""
+    var name: String?
+    var defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +22,33 @@ class LoginScreen: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func studentButton(_ sender: UIButton) {
-        let name = nameTextField.text ?? "No Name!"
+    override func viewDidAppear(_ animated: Bool) {
         
-        db.collection("student").addDocument(data: [
-            "name" : name,
-            "clicks" : 0
-        ])
+    }
+    
+    @IBAction func studentButton(_ sender: UIButton) {
+        name = nameTextField.text
+        defaults.setValue(name, forKey: "name")
         
         performSegue(withIdentifier: "studentGo", sender: nil)
     }
     
     @IBAction func teacherButton(_ sender: UIButton) {
+        name = nameTextField.text
+        defaults.setValue(name, forKey: "name")
         
         performSegue(withIdentifier: "teacherGo", sender: nil)
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.destination is StudentScreen {
             let vc = segue.destination as? StudentScreen
-            vc?.docRef = ref
+            vc?.name = name ?? "No Name!"
+        }
+        if segue.destination is TeacherScreen {
+            let vc = segue.destination as? TeacherScreen
+            vc?.name = name ?? "Default Teacher."
         }
     }
 }

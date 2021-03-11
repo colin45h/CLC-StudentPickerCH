@@ -24,6 +24,7 @@
 		A08957A925F668000012CC49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A08957A825F668000012CC49 /* GoogleService-Info.plist */; };
 		A08957AA25F668000012CC49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A08957A825F668000012CC49 /* GoogleService-Info.plist */; };
 		A08957AB25F668000012CC49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A08957A825F668000012CC49 /* GoogleService-Info.plist */; };
+		A0DD633525F9F1A30062EF4E /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DD633425F9F1A30062EF4E /* Student.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		A06FFBE125F29F83002C08FF /* StudentPickerCHUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentPickerCHUITests.swift; sourceTree = "<group>"; };
 		A06FFBE325F29F83002C08FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A08957A825F668000012CC49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A0DD633425F9F1A30062EF4E /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		B1352060AFCF225F00651ABC /* Pods-StudentPickerCHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentPickerCHTests.release.xcconfig"; path = "Target Support Files/Pods-StudentPickerCHTests/Pods-StudentPickerCHTests.release.xcconfig"; sourceTree = "<group>"; };
 		DCA0DECF77082A74FB3664E2 /* Pods-StudentPickerCHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentPickerCHTests.debug.xcconfig"; path = "Target Support Files/Pods-StudentPickerCHTests/Pods-StudentPickerCHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E6F33FE0EF9240B64FAB59E7 /* Pods-StudentPickerCH-StudentPickerCHUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudentPickerCH-StudentPickerCHUITests.release.xcconfig"; path = "Target Support Files/Pods-StudentPickerCH-StudentPickerCHUITests/Pods-StudentPickerCH-StudentPickerCHUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				A06FFBBE25F29F82002C08FF /* SceneDelegate.swift */,
 				A06FFBC025F29F82002C08FF /* StudentScreen.swift */,
 				A00B060B25F66BC200623896 /* TeacherScreen.swift */,
+				A0DD633425F9F1A30062EF4E /* Student.swift */,
 				A06FFBC225F29F82002C08FF /* Main.storyboard */,
 				A00B061025F66C4200623896 /* LoginScreen.swift */,
 				A06FFBC825F29F82002C08FF /* Assets.xcassets */,
@@ -194,7 +197,6 @@
 				A06FFBB625F29F82002C08FF /* Frameworks */,
 				A06FFBB725F29F82002C08FF /* Resources */,
 				76FCDDC7B11BDA2B528EDC3E /* [CP] Embed Pods Frameworks */,
-				7C6E147D91C27769F9207140 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,7 +235,6 @@
 				A06FFBDA25F29F83002C08FF /* Frameworks */,
 				A06FFBDB25F29F83002C08FF /* Resources */,
 				9B3B5AFC8F3DBAB031360F56 /* [CP] Embed Pods Frameworks */,
-				D2E73A2A405C954C585C68CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,23 +336,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudentPickerCH/Pods-StudentPickerCH-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C6E147D91C27769F9207140 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StudentPickerCH/Pods-StudentPickerCH-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StudentPickerCH/Pods-StudentPickerCH-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudentPickerCH/Pods-StudentPickerCH-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9B3B5AFC8F3DBAB031360F56 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -435,23 +419,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D2E73A2A405C954C585C68CB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StudentPickerCH-StudentPickerCHUITests/Pods-StudentPickerCH-StudentPickerCHUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StudentPickerCH-StudentPickerCHUITests/Pods-StudentPickerCH-StudentPickerCHUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudentPickerCH-StudentPickerCHUITests/Pods-StudentPickerCH-StudentPickerCHUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -464,6 +431,7 @@
 				A06FFBBD25F29F82002C08FF /* AppDelegate.swift in Sources */,
 				A00B060C25F66BC200623896 /* TeacherScreen.swift in Sources */,
 				A06FFBBF25F29F82002C08FF /* SceneDelegate.swift in Sources */,
+				A0DD633525F9F1A30062EF4E /* Student.swift in Sources */,
 				A00B061125F66C4200623896 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
