@@ -13,4 +13,7 @@ class Game {
     var teacherName: String = "Class Default Teacher."
     var gameID: String = "demoGame"
     
+    func printGameData(){
+        print("\(isActive), \(teacherName), \(gameID)")
+    }
 }

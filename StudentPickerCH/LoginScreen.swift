@@ -18,7 +18,7 @@ class LoginScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -63,31 +63,35 @@ class LoginScreen: UIViewController {
                     gameList.append(gameMade)
                 }
             }
-        }
-        
-        var con = 0
-        var currentGameID = ""
-        
-        for game in gameList {
-            if (game.isActive == true) {
-                con = 1
-                currentGameID = game.gameID
-                break
-            }
-        }
-        
-        if (con == 0){
-            let alert = UIAlertController(title: "Oops!", message: "There are no games currently in progress.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-            }))
-            self.present(alert, animated: true, completion: nil)
             
-            return
+//            for game in gameList {
+//                game.printGameData()
+//            }
+            
+            var con = 0
+            var currentGameID = ""
+            
+            for game in gameList {
+                if (game.isActive == true) {
+                    con = 1
+                    currentGameID = game.gameID
+                    break
+                }
+            }
+            
+            if (con == 0){
+                let alert = UIAlertController(title: "Oops!", message: "There are no games currently in progress.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                return
+            }
+        
+            self.defaults.setValue(currentGameID, forKey: "gameID")
+        
+            self.performSegue(withIdentifier: "studentGo", sender: nil)
         }
-        
-        defaults.setValue(currentGameID, forKey: "gameID")
-        
-        performSegue(withIdentifier: "studentGo", sender: nil)
     }
     
     @IBAction func teacherButton(_ sender: UIButton) {
