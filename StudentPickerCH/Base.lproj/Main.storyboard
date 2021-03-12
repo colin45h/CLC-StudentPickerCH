@@ -56,6 +56,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="OwG-Vg-rkX"/>
                     <connections>
+                        <outlet property="clickInterface" destination="4EQ-5j-bZf" id="8U8-va-J5a"/>
                         <outlet property="clickLabel" destination="eee-yq-sgE" id="rjT-rU-FcJ"/>
                     </connections>
                 </viewController>

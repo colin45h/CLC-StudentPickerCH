@@ -27,6 +27,15 @@ class LoginScreen: UIViewController {
     }
     
     @IBAction func studentButton(_ sender: UIButton) {
+        if(nameTextField.text == "") {
+            let alert = UIAlertController(title: "Oops!", message: "You forgot to enter a name.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
         name = nameTextField.text
         defaults.setValue(name, forKey: "name")
         
@@ -82,6 +91,15 @@ class LoginScreen: UIViewController {
     }
     
     @IBAction func teacherButton(_ sender: UIButton) {
+        if(nameTextField.text == "") {
+            let alert = UIAlertController(title: "Oops!", message: "You forgot to enter a name.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
         name = nameTextField.text
         defaults.setValue(name, forKey: "name")
         

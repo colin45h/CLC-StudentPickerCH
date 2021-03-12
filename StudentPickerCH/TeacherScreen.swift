@@ -31,6 +31,8 @@ class TeacherScreen: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if let sesh = defaults.object(forKey: "name") as? Data {
             name = String(decoding: sesh, as: UTF8.self)
         }
@@ -81,12 +83,13 @@ class TeacherScreen: UIViewController {
         
         ref = db.collection("games").addDocument(data: [
             "isActive" : true,
-            "timePlayed" : Timestamp()
+            "timePlayed" : Timestamp(),
+            "teacherName" : name
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added with ID: \(self.ref!.documentID)")
+                print("Game added with ID: \(self.ref!.documentID)")
             }
         }
         
@@ -97,7 +100,7 @@ class TeacherScreen: UIViewController {
     @IBAction func endGame(_ sender: UIButton) {
         db.collection("games").document("\(ref!.documentID)").setData([
             "isActive" : false
-        ])
+        ], merge: true)
         
         db.collection("games").document(ref!.documentID).collection("students").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -125,6 +128,18 @@ class TeacherScreen: UIViewController {
         print(students)
         
         students.sort(by: { $0.clicks < $1.clicks } )
+        
+        if(students.isEmpty == true) {
+            let alert = UIAlertController(title: "Oops!", message: "There are no students in your game. Ending now!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            endButton.isHidden = true
+            startButton.isHidden = false
+            
+            return
+        }
         
         var potentialStudents: [Student] = []
         let lowClicks = students[0].clicks
