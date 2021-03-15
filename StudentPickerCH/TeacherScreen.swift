@@ -107,7 +107,7 @@ class TeacherScreen: UIViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    // print("\(document.documentID) => \(document.data())")
+                    print("\(document.documentID) => \(document.data())")
                     
                     let studentMade = Student()
                     
@@ -123,40 +123,40 @@ class TeacherScreen: UIViewController {
                     self.students.append(studentMade)
                 }
             }
-        }
-        
-        print(students)
-        
-        students.sort(by: { $0.clicks < $1.clicks } )
-        
-        if(students.isEmpty == true) {
-            let alert = UIAlertController(title: "Oops!", message: "There are no students in your game. Ending now!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
-            }))
-            self.present(alert, animated: true, completion: nil)
             
-            endButton.isHidden = true
-            startButton.isHidden = false
+            print(self.students)
             
-            return
-        }
-        
-        var potentialStudents: [Student] = []
-        let lowClicks = students[0].clicks
-        var potentialString = ""
-        
-        for student in students {
-            if student.clicks == lowClicks {
-                potentialStudents.append(student)
-                potentialString += "\(student.name ?? "Name Output Error."), "
+            self.students.sort(by: { $0.clicks < $1.clicks } )
+            
+            if(self.students.isEmpty == true) {
+                let alert = UIAlertController(title: "Oops!", message: "There are no students in your game. Ending now!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                self.endButton.isHidden = true
+                self.startButton.isHidden = false
+                
+                return
             }
+            
+            var potentialStudents: [Student] = []
+            let lowClicks = self.students[0].clicks
+            var potentialString = "Students with lowest clicks: "
+            
+            for student in self.students {
+                if student.clicks == lowClicks {
+                    potentialStudents.append(student)
+                    potentialString += "\(student.name ?? "Name Output Error."), "
+                }
+            }
+            self.studentListLabel.text = potentialString
+            
+            let theChosenOne = potentialStudents.randomElement()
+            self.chosenStudentLabel.text = "Chosen Student: \(theChosenOne?.name ?? "NAME OUTPUT ERROR.")"
+            
+            self.endButton.isHidden = true
+            self.startButton.isHidden = false
         }
-        studentListLabel.text = potentialString
-        
-        let theChosenOne = potentialStudents.randomElement()
-        chosenStudentLabel.text = theChosenOne?.name ?? "Name Output Error."
-        
-        endButton.isHidden = true
-        startButton.isHidden = false
     }
 }

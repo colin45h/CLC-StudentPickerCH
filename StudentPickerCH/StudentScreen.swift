@@ -44,7 +44,7 @@ class StudentScreen: UIViewController {
         clicks = 0
         clickInterface.isHidden = true
         
-        gameListener = db.collection("games").document("gameID").addSnapshotListener { (docSnapshot, error) in
+        gameListener = db.collection("games").document(gameID).addSnapshotListener { (docSnapshot, error) in
             //            if let error = error {
             //                print("There was an error with the database connection: \(error.localizedDescription)")
             //            } else {
